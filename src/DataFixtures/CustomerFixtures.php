@@ -10,17 +10,17 @@ class CustomerFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-         $customer = new Customer();
-         $customer->setFirstName('Daryl')
-             ->setLastName('Lambert')
-             ->setEmail('daryl.lambert@example.com')
-             ->setCountry('Australia')
-             ->setCity('Warragul')
-             ->setUsername('ticklishbutterfly378')
-             ->setGender('male')
-             ->setPhone('02-9453-3200');
+        $customer = new Customer();
+        $customer->setFirstName('Daryl')
+            ->setLastName('Lambert')
+            ->setEmail('daryl.lambert@example.com')
+            ->setCountry('Australia')
+            ->setCity('Warragul')
+            ->setUsername('ticklishbutterfly378')
+            ->setGender('male')
+            ->setPhone('02-9453-3200');
 
-         $manager->persist($customer);
+        $manager->persist($customer);
 
         $customer = new Customer();
         $customer->setFirstName('Daryl')

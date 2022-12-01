@@ -8,5 +8,10 @@ use Generator;
 
 interface DataProviderInterface
 {
+    /**
+     * @param int $limit
+     *
+     * @return Generator
+     */
     public function getData(int $limit = 100): Generator;
 }

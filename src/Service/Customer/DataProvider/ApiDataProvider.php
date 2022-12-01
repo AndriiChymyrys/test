@@ -11,10 +11,17 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class ApiDataProvider implements DataProviderInterface
 {
+    /**
+     * @param ApiClientInterface $apiClient
+     * @param SerializerInterface $serializer
+     */
     public function __construct(protected ApiClientInterface $apiClient, protected SerializerInterface $serializer)
     {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getData(int $limit = 100): Generator
     {
         $items = $this->apiClient->fetchData(['results' => $limit, 'nat' => 'AU']);

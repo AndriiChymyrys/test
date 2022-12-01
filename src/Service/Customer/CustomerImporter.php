@@ -11,12 +11,19 @@ use App\Service\Customer\DataProvider\DataProviderInterface;
 
 class CustomerImporter implements CustomerImporterInterface
 {
+    /**
+     * @param DataProviderInterface $dataProvider
+     * @param EntityManagerInterface $entityManager
+     */
     public function __construct(
         protected DataProviderInterface $dataProvider,
         protected EntityManagerInterface $entityManager
     ) {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function import(int $limit = 100): void
     {
         foreach ($this->dataProvider->getData($limit) as $customer) {
@@ -26,6 +33,11 @@ class CustomerImporter implements CustomerImporterInterface
         $this->entityManager->flush();
     }
 
+    /**
+     * @param CustomerDto $customerDto
+     *
+     * @return void
+     */
     protected function saveCustomer(CustomerDto $customerDto): void
     {
         $existsCustomer = $this->entityManager->getRepository(Customer::class)->findOneBy(
